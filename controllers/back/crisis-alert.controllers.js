@@ -391,9 +391,11 @@ let getCrisisAlertsForm = async (req, res) => {
           dependent: true,
           dependent_section_id: "personalInformation",
           dependent_question_id: "fecha_nacimiento",
-          question_type: "date",
-          max: moment().format("YYYY-MM-DD"),
-          question: "Edad apróximada"
+          dependent_answer: {
+            type: "clear"
+          },
+          question_type: "numeric",
+          question: "Edad apróximada" 
         },
         {
           question_id: "id_sexo_solicitante",
