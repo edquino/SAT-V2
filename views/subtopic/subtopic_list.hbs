@@ -1,0 +1,51 @@
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Subtemas</h3>
+        <ol class="breadcrumb">
+            {{!-- <li class="breadcrumb-item"><a href="javascript:void(0)">M&oacute;dulos</a></li> --}}
+            <li class="breadcrumb-item active">Lista de Subtemas</li>
+        </ol>
+    </div>
+    <div class="col-md-7 align-self-center text-right d-none d-md-block" style="color: white;">
+        <a href="/api-sat/subtopic/create-view" type="button" class="btn btn-info"><i class="fa fa-plus-circle"></i>
+            Nuevo</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Subtemas</h4>
+                <h6 class="card-subtitle">Cat&aacute;logo - Subtemas</h6>
+                <div class="table-responsive m-t-40">
+                    <table id="config-table" class="table display table-bordered table-striped no-wrap">
+                        <thead>
+                            <tr>
+                                <th>Tema</th>
+                                <th>Subtema</th>
+                                <th>Estado</th>
+                                <th>Modificar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each subtopic}}
+                            <tr>
+                                <td>{{nombre_tema}}</td>
+                                <td>{{nombre_subtema}}</td>
+                                <td>{{#stateDetails estado}}{{/stateDetails}}</td>
+                                <td>
+                                    <a href="/api-sat/subtopic/{{id_subtema}}/update-view" class="btn btn-secondary"
+                                        aria-pressed="false">
+                                        <i class="ti-pencil text" aria-hidden="true"></i>
+                                        <i class="ti-pencil-alt text-active" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

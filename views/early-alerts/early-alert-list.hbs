@@ -1,0 +1,245 @@
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        {{!-- <h3 class="text-themecolor">Alertas</h3> --}}
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Alertas</a></li>
+            <li class="breadcrumb-item active">Lista de Alerta</li>
+        </ol>
+    </div>
+    {{#ShowOptionViewAlert user.role}}
+    <div class="col-md-7 align-self-center text-right d-none d-md-block" style="color: white;">
+        <a href="/api-sat/early-alert/view-create" type="button" class="btn btn-info"><i class="fa fa-plus-circle"></i>
+            Nuevo</a>
+    </div>
+    {{/ShowOptionViewAlert}}
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+{{!-- <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                This is some text within a card block.
+            </div>
+        </div>
+    </div>
+</div> --}}
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-12">
+        <!-- table responsive -->
+        <div class="card">
+            <div class="card-body">
+                {{!-- <h4 class="card-title">Alertas</h4> --}}
+                <h6 class="card-subtitle">Cat&aacute;logo Alertas</h6>
+                <div class="table-responsive m-t-40">
+
+                    {{!-- Table Perfil Tenico --}}
+                    {{#showOptionsAlertTecnico user.role}}
+                    <table id="config-table" class="table display table-bordered table-striped no-wrap">
+                        <thead>
+                            <tr>
+                                <th>#Caso</th>
+                                <th>Situaci&oacute;n Conflictiva</th>
+                                <th>Criterio</th>
+                                <th>Tipo Alerta</th>
+                                <th>Ver</th>
+                                <th>Modificar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each earlyAlerts}}
+                            <tr>
+                                {{!-- id alerta --}}
+                                {{#Relatedcase alerta_padre}}
+                                <td><strong>{{id_alerta_temprana}} <i class="ti-plus"></i></strong></td>
+                                {{else}}
+                                <td>{{id_alerta_temprana}}</td>
+                                {{/Relatedcase}}
+                                <td>{{nombre_sit_conflictiva}}</td>
+                                <td>{{nombre_criterio}}</td>
+                                <td>{{nombre_alerta}}</td>
+                                {{!-- Ver --}}
+                                <td>
+                                    <a href="/api-sat/early-alert/{{id_alerta_temprana}}/view-alert"
+                                        class="btn btn-secondary" aria-pressed="false">
+                                        <i class="ti-eye text" aria-hidden="true"></i>
+                                        <i class="ti-pencil-alt text-active" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                {{!-- Modificar --}}
+                                {{#HiddenButtonModify enviada_analizar}}
+                                <td>
+                                    <a href="/api-sat/early-alert/{{id_alerta_temprana}}/view-update"
+                                        class="btn btn-secondary" aria-pressed="false">
+                                        <i class="ti-pencil text" aria-hidden="true"></i>
+                                        <i class="ti-pencil-alt text-active" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                {{else}}
+                                <td>
+                                    <a href="#" class="btn btn-select" style="pointer-events: none; cursor:default;"></a>
+                                </td>
+                                {{/HiddenButtonModify}}
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    {{/showOptionsAlertTecnico}}
+
+                    {{!-- Tabla Perfil Consulta--}}
+                    {{#showOptionsAlertConsulta user.role}}
+                    <table id="config-table" class="table display table-bordered table-striped no-wrap">
+                        <thead>
+                            <tr>
+                                <th>#Caso</th>
+                                <th>Situaci&oacute;n Conflictiva</th>
+                                <th>Criterio</th>
+                                <th>Tipo Alerta</th>
+                                <th>Ver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each earlyAlerts}}
+                                <tr>
+                                    <td>{{id_alerta_temprana}}</td>
+                                    <td>{{nombre_sit_conflictiva}}</td>
+                                    <td>{{nombre_criterio}}</td>
+                                    <td>{{nombre_alerta}}</td>
+                                    <td>
+                                        <a href="/api-sat/early-alert/{{id_alerta_temprana}}/view-alert"
+                                            class="btn btn-secondary" aria-pressed="false">
+                                            <i class="ti-eye text" aria-hidden="true"></i>
+                                            <i class="ti-pencil-alt text-active" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    {{/showOptionsAlertConsulta}}
+
+                    {{!-- Tabla Perfil supervisor --}}
+                    {{#showOptionsAlertSupervisor user.role}}
+                    <table id="config-table" class="table display table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>#Caso</th>
+                                <th>Situaci&oacute;n Conflictiva</th>
+                                <th>Criterio</th>
+                                <th>Tipo Alerta</th>
+                                <th>Ver</th>
+                                <th>Modificar</th>
+                                <th>Analizar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each earlyAlerts}}
+                            <tr>
+                                {{#Relatedcase alerta_padre}}
+                                <td><strong>{{id_alerta_temprana}} <i class="ti-plus"></i></strong></td>
+                                {{else}}
+                                <td>{{id_alerta_temprana}}</td>
+                                {{/Relatedcase}}
+                                <td>{{nombre_sit_conflictiva}}</td>
+                                <td>{{nombre_criterio}}</td>
+                                <td>{{nombre_alerta}}</td>
+                                {{!-- Ver --}}
+                                <td>
+                                    <a href="/api-sat/early-alert/{{id_alerta_temprana}}/view-alert"
+                                        class="btn btn-secondary" aria-pressed="false">
+                                        <i class="ti-eye text" aria-hidden="true"></i>
+                                        <i class="ti-pencil-alt text-active" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                {{!-- Modificar --}}
+                                {{#HiddenButtonModify enviada_analizar}}
+                                <td>
+                                    <a href="/api-sat/early-alert/{{id_alerta_temprana}}/view-update"
+                                        class="btn btn-secondary" aria-pressed="false">
+                                        <i class="ti-pencil text" aria-hidden="true"></i>
+                                        <i class="ti-pencil-alt text-active" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                {{else}}
+                                <td>
+                                    <a href="#" class="btn btn-select" style="pointer-events: none; cursor:default;"></a>
+                                </td>
+                                {{/HiddenButtonModify}}
+                                {{!-- Analizar --}}
+                                <td>
+                                    <a href="/api-sat/early-alert/{{id_alerta_temprana}}/view-analize"
+                                        class="btn btn-secondary" aria-pressed="false">
+                                        <i class="ti-check text" aria-hidden="true"></i>
+                                        <i class="ti-pencil-alt text-active" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    {{/showOptionsAlertSupervisor}}
+
+                    {{!-- Tabla Perfil Analista --}}
+                    {{#showOptionsAlertAnalista user.role}}
+                    <table id="config-table" class="table display table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>#Caso</th>
+                                <th>Situaci&oacute;n Conflictiva</th>
+                                <th>Criterio</th>
+                                <th>Tipo Alerta</th>
+                                <th>Ver</th>
+                                <th>Analizar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each earlyAlerts}}
+                            <tr>   
+                                {{#Relatedcase alerta_padre}}
+                                <td><strong>{{id_alerta_temprana}} <i class="ti-plus"></i></strong></td>
+                                {{else}}
+                                <td>{{id_alerta_temprana}}</td>
+                                {{/Relatedcase}}
+                                <td>{{nombre_sit_conflictiva}}</td>
+                                <td>{{nombre_criterio}}</td>
+                                <td>{{nombre_alerta}}</td>
+                                <td>
+                                    <a href="/api-sat/early-alert/{{id_alerta_temprana}}/view-alert"
+                                        class="btn btn-secondary" aria-pressed="false">
+                                        <i class="ti-eye text" aria-hidden="true"></i>
+                                        <i class="ti-pencil-alt text-active" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/api-sat/early-alert/{{id_alerta_temprana}}/view-analize"
+                                        class="btn btn-secondary" aria-pressed="false">
+                                        <i class="ti-check text" aria-hidden="true"></i>
+                                        <i class="ti-pencil-alt text-active" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    {{/showOptionsAlertAnalista}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->

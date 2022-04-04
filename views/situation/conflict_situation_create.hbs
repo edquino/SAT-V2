@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Crear Situaci&oacute;n Conflictiva</h4>
+                {{!-- <h6 class="card-subtitle">Bootstrap Form Validation check the --}}
+                    {{!-- <a href="http://reactiveraven.github.io/jqBootstrapValidation/">official website </a></h6>
+                --}}
+                <form class="m-t-40" novalidate action="/api-sat/situation/create" method="POST">
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>T&iacute;tulo Situaci&oacute;n Conflictiva<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" name="nombre_sit_conflictiva" class="form-control" required
+                                            data-validation-required-message="Este campo es obligatorio">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Subtemas</h5>
+                                    <div class="controls">
+                                        <select name="id_subtema" id="id_subtema" class="form-control" required
+                                            data-validation-required-message="Este campo es obligatorio">
+                                            {{#each subtopic}}
+                                            <option value="{{id_subtema}}">{{nombre_subtema}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Estado</h5>
+                                    <div class="controls">
+                                        <select name="estado" id="situation" class="select2 form-control" required
+                                            data-validation-required-message="Este campo es obligatorio">
+                                            <option value="1">Activo</option>
+                                            <option value="0">Inactivo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-xs-right">
+                            <button type="submit" class="btn btn-info">Guardar</button>
+                            <a href="/api-sat/situation-list" type="reset" class="btn btn-inverse">Cancelar</a>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

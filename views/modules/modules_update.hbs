@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Actualizar M&oacute;dulo</h4>
+                <form class="m-t-40" novalidate action="/api-sat/modules/{{module.id_modulo}}/update"
+                    method="POST">
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>T&iacute;tulo M&oacute;dulo</h5>
+                                    <div class="controls">
+                                        <input type="text" name="nombre_modulo" class="form-control"
+                                            value="{{module.nombre_modulo}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Tipo M&oacute;dulo</h5>
+                                    <div class="controls">
+                                        <select class="select2 form-control" name="tipo_modulo" id="tipo_modulo" required data-validation-required-message="Este campo es obligatorio">
+                                            <option value="1">M&oacute;dulo App</option>
+                                            <option value="2">M&oacute;dulo Web</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Estado</h5>
+                                    <div class="controls">
+                                        <select class="select2 form-control" name="estado" id="estado" required data-validation-required-message="Este campo es obligatorio">
+                                            <option value="1">Activo</option>
+                                            <option value="0">Inactivo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-xs-right">
+                            <button type="submit" class="btn btn-info">Actualizar</button>
+                            <a href="/api-sat/modules-list" type="reset" class="btn btn-inverse">Cancelar</a>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

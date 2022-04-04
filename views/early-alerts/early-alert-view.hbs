@@ -1,0 +1,721 @@
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/api-sat/early-alert/list">Alertas</a></li>
+            <li class="breadcrumb-item active">Ver Alerta</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card card-body">
+            <h4 class="card-title">Alerta</h4>
+            <h5 class="card-subtitle"> Formulario de Alerta </h5>
+            <form class="form-horizontal mt-4" action="#" method="POST">
+                <div class="form-group">
+                    <h5>Tipo de Fuente <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <select id="id_tipo_fuente" name="id_tipo_fuente" class="select2 form-control" disabled>
+                            <option value="{{getAlert.id_tipo_fuente}}">{{getAlert.nombre_tipo_fuente}}</option>
+                            {{#each sourceType}}
+                            <option value="{{id_tipo_fuente}}">{{nombre_tipo_fuente}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Fuente <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <select id="id_fuente" name="id_fuente" class="select2 form-control" disabled>
+                            <option value="{{getAlert.id_fuente}}">{{getAlert.nombre_fuente}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                {{!-- Form Prensa Escrita --}}
+                <div class="content-prensa" id="prensa-escrita" style="display: {{#showPrensaEscrita getAlert.titulo_noticia}}{{/showPrensaEscrita}};">
+                    <div class="form-group">
+                        <fieldset disabled>
+                            <input type="text" id="disabledTextInput" class="form-control" value="Prensa Escrita">
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <h5>Título de la Noticia</h5>
+                        <input type="text" class="form-control" name="titulo_noticia" value="{{getAlert.titulo_noticia}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Nombre del medio</h5>
+                        <input type="text" class="form-control" name="nombre_medio_prensa" value="{{getAlert.nombre_medio_prensa}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Páginas</h5>
+                        <input type="text" class="form-control" name="paginas_prensa" value="{{getAlert.paginas_prensa}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Autor/a</h5>
+                        <input type="text" class="form-control" name="autor_prensa" value="{{getAlert.autor_prensa}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Fecha de Publicación</h5>
+                        <input type="text" class="form-control" name="fecha_publicacion_prensa" value="{{getAlert.nueva_fecha_prensa}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Fotografía</h5>
+                        <div class="custom-file mb-3">
+                            <input type="file" class="custom-file-input" id="customFileLang" lang="es"
+                                name="fotografia_prensa" disabled>
+                            <label class="custom-file-label form-control" for="customFileLang">Seleccionar
+                                Archivo</label>
+                        </div>
+                    </div>
+                </div>
+                {{!--Fin--}}
+
+                {{!-- Form Television/Radio --}}
+                <div class="content-radio-tv" id="radio-tv" style="display: {{#showFormTvRadio getAlert.nombre_medio_radio}}{{/showFormTvRadio}}; color:blank;">
+                    <div class="form-group">
+                        <fieldset disabled>
+                            <input type="text" id="disabledTextInput" class="form-control" value="Radio/TV">
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <h5>Nombre del Medio</h5>
+                        <input type="text" class="form-control" name="nombre_medio_radio" value="{{getAlert.nombre_medio_radio}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Canal/Emisora</h5>
+                        <input type="text" class="form-control" name="canal_radio" value="{{getAlert.canal_radio}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Nombre del Programa</h5>
+                        <input type="text" class="form-control" name="nombre_programa_radio" value="{{getAlert.nombre_programa_radio}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Fecha y hora de Emisión</h5>
+                        <input class="form-control" type="text" name="fecha_emision_radio" value="{{getAlert.nueva_fecha_radio}}" disabled>
+                    </div>
+                </div>
+                {{!-- fin --}}
+
+                {{!-- Form Colectivos --}}
+                <div class="content-colectivo" id="colectivo" style="display: {{#showFormColectivos getAlert.nombre_colectivo}}{{/showFormColectivos}};">
+                    <div class="form-group">
+                        <fieldset disabled>
+                            <input type="text" id="disabledTextInput" class="form-control" value="Colectivos">
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <h5>Nombre Colectivo</h5>
+                        <input type="text" class="form-control" name="nombre_colectivo" value="{{getAlert.nombre_colectivo}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Nombre Contacto</h5>
+                        <input type="text" class="form-control" name="nombre_contacto_colectivo" value="{{getAlert.nombre_contacto_colectivo}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Teléfono Contacto</h5>
+                        <input type="text" class="form-control" name="telefono_colectivo" value="{{getAlert.telefono_colectivo}}" disabled>
+                    </div>
+                </div>
+                {{!-- fin --}}
+
+                {{!-- Form Instituaciones Gubernamentales --}}
+                <div class="content-inst-gub" id="inst-gub" style="display: {{#showIntGubernamentales getAlert.nombre_inst_gub}}{{/showIntGubernamentales}};">
+                    <div class="form-group">
+                        <fieldset disabled>
+                            <input type="text" id="disabledTextInput" class="form-control" value="Instituaciones Gubernamentales">
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <h5>Nombre Organización</h5>
+                        <input type="text" class="form-control" name="nombre_inst_gub" value="{{getAlert.nombre_inst_gub}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Nombre Contacto</h5>
+                        <input type="text" class="form-control" name="contacto_inst_gub" value="{{getAlert.contacto_inst_gub}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Correo</h5>
+                        <input type="text" class="form-control" name="correo_inst_gub" value="{{getAlert.correo_inst_gub}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Teléfono Contacto</h5>
+                        <input type="text" class="form-control" name="telefono_inst_gub" value="{{getAlert.telefono_inst_gub}}" disabled>
+                    </div>
+                     <div class="form-group">
+                        <h5>Datos Adicionales</h5>
+                        <input type="text" class="form-control" name="datos_inst_gub" value="{{getAlert.datos_inst_gub}}" disabled>
+                    </div>
+                </div>
+                {{!-- fin --}}
+
+                {{!-- Form Organismos Internacionales --}}
+                <div class="content-ong-internacionales" id="ong-internacionales" style="display: {{#showOngInternacionales getAlert.nombre_organismo}}{{/showOngInternacionales}};">
+                    <div class="form-group">
+                        <fieldset disabled>
+                            <input type="text" id="disabledTextInput" class="form-control" value="Organismos Internacionales">
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <h5>Nombre Organización</h5>
+                        <input type="text" class="form-control" name="nombre_organismo" value="{{getAlert.nombre_organismo}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Nombre Contacto</h5>
+                        <input type="text" class="form-control" name="nombre_contacto_organismo" value="{{getAlert.nombre_contacto_organismo}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Correo</h5>
+                        <input type="text" class="form-control" name="correo_organismo" value="{{getAlert.correo_organismo}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Teléfono Contacto</h5>
+                        <input type="text" class="form-control" name="telefono_organismo" value="{{getAlert.telefono_organismo}}" disabled>
+                    </div>
+                     <div class="form-group">
+                        <h5>Datos Adicionales</h5>
+                        <input type="text" class="form-control" name="datos_organismo" value="{{getAlert.datos_organismo}}" disabled>
+                    </div>
+                </div>
+                {{!-- fin --}}
+
+                {{!-- Form Mensajeria --}}
+                <div class="content-mensajeria" id="mensajeria" style="display: {{#showFormMensajeria getAlert.nombre_mensajeria}}{{/showFormMensajeria}};">
+                    <div class="form-group">
+                        <fieldset disabled>
+                            <input type="text" id="disabledTextInput" class="form-control" value="Mensajería">
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <h5>Nombre Mensajería</h5>
+                        <input type="text" class="form-control" name="nombre_mensajeria" value="{{getAlert.nombre_mensajeria}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Nombre Contacto</h5>
+                        <input type="text" class="form-control" name="nombre_contacto_mensajeria" value="{{getAlert.nombre_contacto_mensajeria}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Contacto</h5>
+                        <input type="text" class="form-control" name="contacto_mensajeria" value="{{getAlert.contacto_mensajeria}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Datos Adicionales</h5>
+                        <input type="text" class="form-control" name="datos_mensajeria" value="{{getAlert.datos_mensajeria}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Captura de Pantalla</h5>
+                        <div class="custom-file mb-3">
+                            <input type="file" class="custom-file-input" id="customFileLang" lang="es"
+                                name="fotografia_mensajeria" disabled>
+                            <label class="custom-file-label form-control" for="customFileLang">Seleccionar
+                                Archivo</label>
+                        </div>
+                    </div>
+                </div>
+                {{!--Fin--}}
+
+                {{!-- Form Otras --}}
+                <div class="content-otras" id="otras" style="display: {{#showFormOtras getAlert.otras_detalle}}{{/showFormOtras}};">
+                    <div class="form-group">
+                        <fieldset disabled>
+                            <input type="text" id="disabledTextInput" class="form-control" value="Otras">
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <h5>Detalle</h5>
+                        <input type="text" class="form-control" name="otras_detalle" value="{{getAlert.otras_detalle}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Datos adicionales</h5>
+                        <input type="text" class="form-control" name="otras_adicionales" value="{{getAlert.otras_adicionales}}" disabled>
+                    </div>
+                </div>
+                {{!-- fin --}}
+
+                {{!-- Form Prensa Escrita --}}
+                <div class="content-medios-digitales" id="medios-digitales" style="display: {{#showMediosDigitales getAlert.titulo_redes}}{{/showMediosDigitales}};">
+                    <div class="form-group">
+                        <fieldset disabled>
+                            <input type="text" id="disabledTextInput" class="form-control" value="Redes Sociales/Medios Digitales">
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <h5>Título de la Noticia</h5>
+                        <input type="text" class="form-control" name="titulo_redes" value="{{getAlert.titulo_redes}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Nombre de la red o medio</h5>
+                        <input type="text" class="form-control" name="nombre_red_social" value="{{getAlert.nombre_red_social}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>URL</h5>
+                        <input type="text" class="form-control" name="url_red_social" value="{{getAlert.url_red_social}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Fecha de Publicación</h5>
+                        <input type="text" class="form-control" name="fecha_pub_red_social" value="{{getAlert.nueva_red_social}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h5>Captura de Pantalla</h5>
+                        <div class="custom-file mb-3">
+                            <input type="file" class="custom-file-input" id="customFileLang" lang="es"
+                                name="pantalla_red_social" disabled>
+                            <label class="custom-file-label form-control" for="customFileLang">Seleccionar
+                                Archivo</label>
+                        </div>
+                    </div>
+                </div>
+                {{!--Fin--}}
+
+                <div class="form-group">
+                    <fieldset disabled>
+                        <input type="text" id="disabledTextInput" class="form-control"
+                            value="Informaci&oacute;n relacionada al hecho/situaci&oacute;n/problema">
+                    </fieldset>
+                </div>
+                <div class="form-group">
+                    <h5>Fecha y hora del hecho/Situaci&oacute;n/Problema <span class="text-danger">*</span></h5>
+                    <input class="form-control" type="text" name="fecha_hechos" value="{{getAlert.nueva_fecha_fechos}}" disabled>
+                    {{!-- <input class="form-control" type="datetime-local" name="fecha_hechos"
+                            value="{{getAlert.nueva_fecha_fechos}}" id="fecha_hechos" required
+                            data-validation-required-message="Este campo es obligatorio"> --}}
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        {{#showFechaFuturaHechos getAlert.fecha_futura_hechos}}
+                        <input type="checkbox" class="custom-control-input" id="fecha_futura_hechos" name="fecha_futura_hechos"
+                            onclick="showOptionsReport();" checked disabled>
+                        {{else}}
+                        <input type="checkbox" class="custom-control-input" id="fecha_futura_hechos" name="fecha_futura_hechos"
+                            onclick="showOptionsReport();" disabled>
+                        {{/showFechaFuturaHechos}}
+                        <label class="custom-control-label" for="fecha_futura_hechos">Fecha Futura</label>
+                    </div>
+                </div>
+                <div class="form-group" id="content-options-reports" style="display: {{#showOptionFechaReporte getAlert.fecha_futura_hechos}}{{/showOptionFechaReporte}};">
+                    <h5>Fecha de reporte del hecho/Situaci&oacute;n/Problema</h5>
+                    <input class="form-control" type="text" name="fecha_reporte" value="{{getAlert.nueva_fecha_reporte}}">
+                    {{!-- <input type="date" class="form-control" placeholder="dd/mm/yyyy" name="fecha_reporte"> --}}
+                </div>
+                <div class="form-group">
+                    <fieldset disabled>
+                        <input type="text" id="disabledTextInput" class="form-control"
+                            value="Lugar especifico del hecho/situaci&oacute;n/problema">
+                    </fieldset>
+                </div>
+                <div class="form-group">
+                    <h5>País</h5>
+                    <div class="controls">
+                        <select id="id_pais" name="id_pais" class="select2 form-control" disabled>
+                            <option value="{{ESAcountry.id_pais}}">{{ESAcountry.descripcion}}</option>
+                            {{#each country}}
+                            <option value="{{id_pais}}">{{descripcion}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Departamento</h5>
+                    <div class="controls">
+                        <select id="id_departamento" name="id_departamento" class="select2 form-control"  disabled>
+                            <option value="{{getAlert.id_departamento}}">{{getAlert.departamento}}</option>
+                            {{#each state}}
+                            <option value="{{id_departamento}}">{{departamento}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Municipio</h5>
+                    <div class="controls">
+                        <select id="id_municipio" name="id_municipio" class="select2 form-control" disabled>
+                            <option value="{{getAlert.id_municipio}}">{{getAlert.municipio}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Tipo de Zona</h5>
+                    <div class="controls">
+                        <select id="id_tipo_zona" name="id_tipo_zona" class="select2 form-control" disabled>
+                            <option value="{{getAlert.id_tipo_zona}}">{{getAlert.nombre_zona}}</option>
+                            {{#each typeZone}}
+                            <option value="{{id_zona}}">{{nombre_zona}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Escenarios</h5>
+                    <div class="controls">
+                        <select id="id_escenarios" name="id_escenarios" class="select2 form-control" disabled>
+                            <option value="{{getAlert.id_escenarios}}">{{getAlert.nombre_escenario}}</option>
+                            {{#each scenario}}
+                            <option value="{{id_escenario}}">{{nombre_escenario}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Breve descripci&oacute;n del hecho/situaci&oacute;n/problema <span class="text-danger">*</span>
+                    </h5>
+                    <div class="controls">
+                        <textarea name="descripcion_hechos" id="textarea" name="antecedentes_hecho" class="form-control" disabled>{{getAlert.antecedentes_hecho}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Derecho <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <select id="id_derecho" name="id_derecho" class="select2 form-control" disabled>
+                            <option value="{{getAlert.id_derecho}}">{{getAlert.derecho}}</option>
+                            {{#each law}}
+                            <option value="{{id_cat_derecho}}">{{descripcion}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" id="temporalidad" style="display: none;">
+                    <h5>Temporalidad</span></h5>
+                    <div class="controls">
+                        <select id="id_temporalidad" name="id_temporalidad" class="select2 form-control" style="width: 100%;" disabled>
+                            {{#each temporality}}
+                            <option value="{{id_temporalidad}}">{{nombre_temporalidad}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" id="cantidad" style="display: none;">
+                    <h5>Cantidad</h5>
+                    <input type="text" class="form-control" name="cantidad" value="{{getAlert.cantidad}}" disabled>
+                </div>
+                <div class="form-group">
+                    <h5>Tem&aacute;tica <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <select id="id_tematica_relacionada" name="id_tematica_relacionada"
+                            class="select2 form-control" disabled>
+                            <option value="{{getAlert.id_tematica_relacionada}}">{{getAlert.nombre_tema}}</option>
+                            {{#each topics}}
+                            <option value="{{id_tema}}">{{nombre_tema}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Subtem&aacute;tica <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <select id="id_sub_tematica" name="id_sub_tematica" class="select2 form-control" disabled>
+                            <option value="{{getAlert.id_sub_tematica}}">{{getAlert.nombre_subtema}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Situaci&oacute;n conflictiva <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <select id="id_situacion_conflictiva" name="id_situacion_conflictiva"
+                            class="select2 form-control" disabled>
+                            <option value="{{getAlert.id_situacion_conflictiva}}">{{getAlert.nombre_sit_conflictiva}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Criterio <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <select id="id_criterio" name="id_criterio" class="select2 form-control" disabled>
+                            <option value="{{getAlert.id_criterio}}">{{getAlert.nombre_criterio}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Antecedente del hecho/situaci&oacute;n/problema <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <textarea name="antecedentes_hecho" id="textarea" class="form-control" rows="3" disabled>{{getAlert.antecedentes_hecho}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <fieldset disabled>
+                        <input type="text" id="disabledTextInput" class="form-control"
+                            value="Partes involucradas directamente">
+                    </fieldset>
+                </div>
+                <div class="form-group">
+                    <h5>Poblaci&oacute;n afectada <span class="text-danger">*</span></h5>
+                    <input type="text" class="form-control" name="poblacion_afectada" value="{{getAlert.poblacion_afectada}}" disabled>
+                </div>
+                <div class="form-group">
+                    <h5>Contraparte <span class="text-danger">*</span></h5>
+                    <input type="text" class="form-control" name="contraparte" required
+                            data-validation-required-message="Este campo es obligatorio" value="{{getAlert.contraparte}}" disabled>
+                </div>
+                <div class="form-group">
+                    <h5>Perfil Actores <span class="text-danger">*</span></h5>
+                    {{#each listPerfiles}}
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="perfil-actors-{{@index}}" name="id_perfil_actor[]" value="{{id_perfil_actor}}" {{checked}} disabled>
+                        <label class="custom-control-label" for="perfil-actors-{{@index}}"> {{nombre_actor}}</label>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="form-group">
+                    <h5>Grupos en condici&oacute;n de Vulnerabilidad <span class="text-danger">*</span></h5>
+                    {{#each GruposVulnerabilidadSelectd}}
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="grupos_vulnerables-{{@index}}" name="id_grupo_vulnerable[]" value="{{id_grp_vulnerable}}" {{checked}} disabled>
+                        <label class="custom-control-label" for="grupos_vulnerables-{{@index}}">{{descripcion}}</label>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="form-group">
+                    <h5>Demanda o solcitud de la poblaci&oacute; afectada a las autoridades competentes <span
+                            class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <textarea name="demanda_solicitud" id="textarea" class="form-control" rows="3" disabled>{{getAlert.demanda_solicitud}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Postura de las autoridades y/o contrapartes</h5>
+                    <div class="controls">
+                        <textarea name="postura_autoridades" id="textarea" class="form-control" rows="3" disabled>{{getAlert.postura_autoridades}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <fieldset disabled>
+                        <input type="text" id="disabledTextInput" class="form-control"
+                            value="Población afectada indeterminada/Determinada">
+                    </fieldset>
+                </div>
+                <div class="form-group">
+                    <fieldset disabled>
+                        <input type="text" id="disabledTextInput" class="form-control" value="Población determinada">
+                    </fieldset>
+                </div>
+                <div class="form-group">
+                    <h5>Ni&ntilde;os</h5>
+                    <div class="controls">
+                        <input type="text" name="poblacion_ninos" class="form-control" value="{{getAlert.poblacion_ninos}}" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Ni&ntilde;as</h5>
+                    <div class="controls">
+                        <input type="text" name="poblacion_ninas" class="form-control" value="{{getAlert.poblacion_ninas}}" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Adolecentes Hombres <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <input type="text" name="adolecentes_hombres" class="form-control" value="{{getAlert.adolecentes_hombres}}" disabled> 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Adolecentes Mujeres <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <input type="text" name="adolecentes_mujeres" class="form-control" value="{{getAlert.adolecentes_mujeres}}" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Hombres</h5>
+                    <div class="controls">
+                        <input type="text" name="poblacion_hombres" class="form-control" value="{{getAlert.poblacion_hombres}}" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Mujeres</h5>
+                    <div class="controls">
+                        <input type="text" name="poblacion_mujeres" class="form-control" value="{{getAlert.poblacion_mujeres}}" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Hombre Adulto Mayor</h5>
+                    <div class="controls">
+                        <input type="text" name="poblacion_hombre_mayor" class="form-control" value="{{getAlert.poblacion_hombre_mayor}}" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Mujeres Adulta Mayor</h5>
+                    <div class="controls">
+                        <input type="text" name="poblacion_mujer_mayor" class="form-control" value="{{getAlert.poblacion_mujer_mayor}}" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <fieldset disabled>
+                        <input type="text" id="disabledTextInput" class="form-control" value="Población Indeterminada">
+                    </fieldset>
+                </div>
+                <div class="form-group">
+                    <h5>Cantidad Aproximada <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <input type="text" name="cantidad_aproximada" class="form-control" value="{{getAlert.cantidad_aproximada}}" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <fieldset disabled>
+                        <input type="text" id="disabledTextInput" class="form-control"
+                            value="Valoración de fase del conflicto">
+                    </fieldset>
+                </div>
+                <div class="form-group">
+                    <h5>Acciones del Hecho</h5>
+                    <div class="controls">
+                        <select id="id_acciones_hecho" name="id_acciones_hecho" class="select2 form-control" disabled>
+                            <option value="{{getAlert.id_acciones_hecho}}">{{getAlert.nombre_hecho}}</option>
+                            {{#each actionsFact}}
+                            <option value="{{id_acciones_hecho}}">{{nombre_hecho}}</optio>
+                                {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        {{#showProteccionVigente getAlert.proteccion_vigente}}
+                        <input type="checkbox" class="custom-control-input" id="proteccion_vigente"
+                            name="proteccion_vigente" checked disabled>
+                        {{else}}
+                        <input type="checkbox" class="custom-control-input" id="proteccion_vigente"
+                            name="proteccion_vigente" disabled>
+                        {{/showProteccionVigente}}
+                        <label class="custom-control-label" for="proteccion_vigente">¿Existen medidas de protección
+                            vigentes?</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        {{#showHuboAgresion getAlert.hubo_agresion}}
+                        <input type="checkbox" class="custom-control-input" id="hubo_agresion" name="hubo_agresion"
+                            onclick="showOptionsAgression();" checked disabled>
+                        {{else}}
+                        <input type="checkbox" class="custom-control-input" id="hubo_agresion" name="hubo_agresion"
+                            onclick="showOptionsAgression();" disabled>
+                        {{/showHuboAgresion}}
+                        <label class="custom-control-label" for="hubo_agresion">¿Se ha producido algún tipo de
+                            agresión?</label>
+                    </div>
+                </div>
+                <div class="form-group" id="content-options-agression" style="display: {{#showGrupoAgresion getAlert.hubo_agresion}}{{/showGrupoAgresion}};">
+                    <h5>Tipo de agresi&oacute;n</h5>
+                    {{#each agressionType}}
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customChecktg-{{@index}}" name="id_tipo_agresion[]" value="{{id_tipo_agresion}}" {{checked}} disabled>
+                        <label class="custom-control-label" for="customChecktg-{{@index}}">{{nombre_agresion}}</label>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        {{#showDialogoConflicto getAlert.dialogo_conflicto}}
+                        <input type="checkbox" class="custom-control-input" id="dialogo_conflicto" name="dialogo_conflicto" checked disabled>
+                        {{else}}
+                        <input type="checkbox" class="custom-control-input" id="dialogo_conflicto" name="dialogo_conflicto" disabled>
+                        {{/showDialogoConflicto}}
+                        <label class="custom-control-label" for="dialogo_conflicto">¿Existe Disposición al
+                            diálogo?</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        {{#showMedidaConflicto getAlert.medida_conflicto}}
+                        <input type="checkbox" class="custom-control-input" id="medida_conflicto" name="medida_conflicto" checked disabled>
+                        {{else}}
+                        <input type="checkbox" class="custom-control-input" id="medida_conflicto" name="medida_conflicto" disabled>
+                        {{/showMedidaConflicto}}
+                        <label class="custom-control-label" for="medida_conflicto">¿Se ha expresado/anunciado la
+                            realización de algún tipo de medida de presión?</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        {{#showDialogoRotoConflicto getAlert.dialogo_roto_conflicto}}
+                        <input type="checkbox" class="custom-control-input" id="dialogo_roto_conflicto" name="dialogo_roto_conflicto" checked disabled>
+                        {{else}}
+                        <input type="checkbox" class="custom-control-input" id="dialogo_roto_conflicto" name="dialogo_roto_conflicto" disabled>
+                        {{/showDialogoRotoConflicto}}
+                        <label class="custom-control-label" for="dialogo_roto_conflicto">¿Se rompió diálogo?</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        {{#ShowCrisisConflicto getAlert.crisis_conflicto}}
+                        <input type="checkbox" class="custom-control-input" id="crisis_conflicto" name="crisis_conflicto"
+                            onclick="showOptionsCrisis();" checked disabled>
+                        {{else}}
+                        <input type="checkbox" class="custom-control-input" id="crisis_conflicto" name="crisis_conflicto"
+                            onclick="showOptionsCrisis();" disabled>
+                        {{/ShowCrisisConflicto}}
+                        <label class="custom-control-label" for="crisis_conflicto">¿Hubo crisis?</label>
+                    </div>
+                </div>
+                <div class="form-group" id="content-acciones-hecho" style="display: {{#showListAccionesHechoAnterios getAlert.crisis_conflicto}}{{/showListAccionesHechoAnterios}};">
+                    <div class="controls">
+                        <h5>Acciones del Hecho Anterior</h5>
+                        <select id="id_acciones_hecho" name="id_acciones_hecho_anterior" class="select2 form-control"
+                            style="width: 100%;" disabled>
+                            <option value="{{getAlert.id_acciones_hecho_anterior}}">{{getAlert.hecho_anterior}}</option>
+                            {{#each actionsFact}}
+                            <option value="{{id_acciones_hecho}}">{{nombre_hecho}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" id="content-resolucion-conflicto" style="display: none;">
+                    <div class="custom-control custom-switch">
+                        {{#ShowResolucionConflicto getAlert.resolucion_conflicto}}
+                        <input type="checkbox" class="custom-control-input" id="resolucion_conflicto" name="resolucion_conflicto" checked disabled>
+                        {{else}}
+                        <input type="checkbox" class="custom-control-input" id="resolucion_conflicto" name="resolucion_conflicto" disabled>
+                        {{/ShowResolucionConflicto}}
+                        <label class="custom-control-label" for="resolucion_conflicto">¿Hubo mecanismo de
+                            resoluci&oacute;n del conflicto?</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Situación actual del conflicto</h5>
+                    <div class="controls">
+                        <select id="id_situacion_conflicto" name="id_situacion_conflicto" class="select2 form-control" disabled>
+                            <option value="{{getAlert.id_situacion_conflicto}}">{{getAlert.nombre_conflicto}}</option>
+                            {{#each conflictSituation}}
+                            <option value="{{id_situacion_conflicto}}">{{nombre_conflicto}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        {{#ShowCantPersonaInvolucrada getAlert.cant_persona_involucrada}}
+                        <input type="checkbox" class="custom-control-input" id="cant_persona_involucrada" name="cant_persona_involucrada"
+                            checked disabled>
+                        {{else}}
+                        <input type="checkbox" class="custom-control-input" id="cant_persona_involucrada" name="cant_persona_involucrada" disabled>
+                        {{/ShowCantPersonaInvolucrada}}
+                        <label class="custom-control-label" for="cant_persona_involucrada">¿A disminuido la canidad de
+                            personas involucradas?</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        {{#showPresenciaFuerzaPublica getAlert.presencia_fuerza_publica}}
+                        <input type="checkbox" class="custom-control-input" id="presencia_fuerza_publica" name="presencia_fuerza_publica"
+                            onclick="showOptionsFuerzaPublica();" checked disabled>
+                        {{else}}
+                        <input type="checkbox" class="custom-control-input" id="presencia_fuerza_publica" name="presencia_fuerza_publica"
+                            onclick="showOptionsFuerzaPublica();" disabled>
+                        {{/showPresenciaFuerzaPublica}}
+                        <label class="custom-control-label" for="presencia_fuerza_publica">¿Hubo presencia de fuerzas
+                            públicas?</label>
+                    </div>
+                </div>
+                <div class="form-group" id="content-intervencion_fuerza_publica" style="display:{{#showOptionIntervencionFuerzaPublica getAlert.presencia_fuerza_publica}}{{/showOptionIntervencionFuerzaPublica}};">
+                    <div class="custom-control custom-switch">
+                        {{#showIntervencionFuerzaPublica getAlert.intervencion_fuerza_publica}}
+                        <input type="checkbox" class="custom-control-input" id="intervencion_fuerza_publica" name="intervencion_fuerza_publica" checked disabled>
+                        {{else}}
+                        <input type="checkbox" class="custom-control-input" id="intervencion_fuerza_publica" name="intervencion_fuerza_publica" disabled>
+                        {{/showIntervencionFuerzaPublica}}
+                        <label class="custom-control-label" for="intervencion_fuerza_publica">¿Hubo intervencion de fuerzas
+                            públicas?</label>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-actions">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

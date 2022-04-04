@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row page-titles">
+        <div class="col-md-12 align-self-center">
+            {{!-- <h3 class="text-themecolor">Agresiones</h3> --}}
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/api-sat/administrative-units-list">Administraci&oacute;n</a></li>
+                <li class="breadcrumb-item active">Actualizar Unidad administrativas</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    {{!-- <h4 class="card-title">Crear Unidad Administrativa</h4> --}}
+                    <h6 class="card-subtitle">Formulario de Unidades Administrativa</h6>
+
+                    <form class="m-t-40" novalidate action="/api-sat/administrative-units/{{administrativeUnit.id_unidad_administrativa}}/update" method="POST">
+                        <section>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <h5>T&iacute;tulo de la Unidad<span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="text" class="form-control" name="nombre_unidad" value="{{administrativeUnit.nombre_unidad}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <h5>Correo Principal<span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="text" class="form-control" name="correo_prinicipal" value="{{administrativeUnit.correo_prinicipal}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <h5>Correo Secundario<span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="text" class="form-control" name="correo_secundario" value="{{administrativeUnit.correo_secundario}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <h5>Correo Tercero<span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                              <input type="text" class="form-control" name="correo_tercero" value="{{administrativeUnit.correo_tercero}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <h5>Estado</h5>
+                                        <div class="controls">
+                                            <select name="estado" id="estado_unidad" class="select2 form-control">
+                                                <option value="1">Activo</option>
+                                                <option value="0">Inactivo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-xs-right">
+                                <button type="submit" class="btn btn-info">Actualizar</button>
+                                <a href="/api-sat/administrative-units-list" type="reset" class="btn btn-inverse">Cancelar</a>
+                            </div>
+                        </section>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

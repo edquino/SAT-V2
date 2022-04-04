@@ -1,0 +1,215 @@
+<div class="container">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/api-sat/early-alert/list">Alertas</a></li>
+                <li class="breadcrumb-item active">Analizar Alerta</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        {{!-- analizar alerts --}}
+        <div class="col-6">
+            <div class="card card-body">
+                <h4 class="card-title"> Analizar Alerta </h4>
+                {{#showAlertAnalyzed earlyAlert.analyzed}}
+                <form class="form-horizontal mt-4"
+                    action="/api-sat/early-alert/{{earlyAlert.id_alerta_temprana}}/analize" method="POST">
+                    <div class="form-group">
+                        <h5>Fase del Conflicto</h5>
+                        <div class="controls">
+                            <select id="id_fase_conflicto" name="id_fase_conflicto" class="select2 form-control"
+                                disabled>
+                                <option value="{{earlyAlert.id_fase_conflicto}}">{{earlyAlert.nombre_fase}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5>Tipo de Alerta</h5>
+                        <div class="controls">
+                            <select id="id_tipo_alerta" name="id_tipo_alerta" class="select2 form-control" disabled>
+                                <option value="{{earlyAlert.id_tipo_alerta}}">{{earlyAlert.nombre_alerta}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5>Acciones PDDH</h5>
+                        <div class="controls">
+                            <select id="id_accion_pddh" name="id_accion_pddh" class="select2 form-control">
+                                {{#each acciones_pddh}}
+                                <option value="{{id_accion_pddh}}">{{nombre_accion}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5> Análisis <span class="text-danger">*</span></h5>
+                        <div class="controls">
+                            <textarea rows="4" id="analisis" name="analisis" class="form-control"
+                                required data-validation-required-message="Este campo es obligatorio"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5>Notificar a </h5>
+                        <div class="controls">
+                            <select id="notificar" name="notificar" class="select2 form-control">
+                                {{#each administrative_unit}}
+                                <option value="{{id_unidad_administrativa}}">{{nombre_unidad}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5>Texto en el Mensaje</h5>
+                        <div class="controls">
+                            <textarea rows="4" name="texto_mensaje" id="texto_mensaje" name="texto_mensaje"
+                                class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-actions">
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-primary"> <i class="fa fa-check"></i> Analizar</button>
+                            <a href="/api-sat/early-alert/list" class="btn btn-dark">Cancelar</a>
+                        </div>
+                    </div>
+                </form>
+                {{else}}
+                <form class="form-horizontal mt-4"
+                    action="/api-sat/early-alert/{{earlyAlert.id_alerta_temprana}}/analize" method="POST">
+                    <div class="form-group">
+                        <h5>Fase del Conflicto</h5>
+                        <div class="controls">
+                            <select id="id_fase_conflicto" name="id_fase_conflicto" class="select2 form-control"
+                                disabled>
+                                <option value="{{earlyAlert.id_fase_conflicto}}">{{earlyAlert.nombre_fase}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5>Tipo de Alerta</h5>
+                        <div class="controls">
+                            <select id="id_tipo_alerta" name="id_tipo_alerta" class="select2 form-control" disabled>
+                                <option value="{{earlyAlert.id_tipo_alerta}}">{{earlyAlert.nombre_alerta}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5>Acciones PDDH</h5>
+                        <div class="controls">
+                            <select id="id_accion_pddh" name="id_accion_pddh" class="select2 form-control" disabled>
+                                <option value="{{earlyAlert.id_accion_pddh}}">{{earlyAlert.nombre_accion}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5> Análisis <span class="text-danger">*</span></h5>
+                        <div class="controls">
+                            <textarea rows="4" name="analisis" id="analisis" name="analisis" class="form-control"
+                                disabled>{{earlyAlert.analisis}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5>Unidad Administrativa Notificada</h5>
+                        <div class="controls">
+                            <select id="notificar" name="notificar" class="select2 form-control" disabled>
+                                <option value="{{earlyAlert.notificar}}">{{earlyAlert.nombre_unidad}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5>Texto en el Mensaje</h5>
+                        <div class="controls">
+                            <textarea rows="4" name="texto_mensaje" id="texto_mensaje" name="texto_mensaje" class="form-control" disabled>{{earlyAlert.texto_mensaje}}</textarea>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-actions">
+                    </div>
+                </form>
+                {{/showAlertAnalyzed}}
+            </div>
+        </div>
+
+        {{!-- alertas relacionadas --}}
+        <div class="col-6">
+            <div class="card card-body">
+                <h4 class="card-title"> Alertas Relacionas</h4>
+
+                <div class="form-actions">
+                    <div class="card-body">
+                        <a href="/api-sat/early-alert/{{earlyAlert.id_alerta_temprana}}/view-relate-alert"
+                            class="btn btn-primary"> <i class="fa fa-check"></i> Relacionar Alerta</a>
+                    </div>
+                </div>
+                <hr>
+
+                {{!-- tabla de las alertas relacionadas --}}
+                <table id="config-table" class="table display table-bordered table-striped no-wrap">
+                    <thead>
+                        <tr>
+                            <th>#Caso</th>
+                            <th>Ver</th>
+                            <th>Remover</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each relatedAlert}}
+                        <tr>
+                            <td>{{id_hijo}}</td>
+                            <td>
+                                <a href="/api-sat/early-alert/{{id_hijo}}/view-alert"
+                                    class="btn btn-secondary" aria-pressed="false">
+                                    <i class="ti-eye text" aria-hidden="true"></i>
+                                    <i class="ti-pencil-alt text-active" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a data-toggle="modal" data-target="#remover-alerta-{{@index}}" data-whatever="@getbootstrap" class="btn btn-secondary" aria-pressed="false">
+                                    <i class="ti-trash text" aria-hidden="true"></i>
+                                    <i class="ti-trash-alt text-active" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                        {{!-- Modal Relacionar Alerta--}}
+                        <div class="modal" id="remover-alerta-{{@index}}" tabindex="-1" role="dialog"
+                            aria-labelledby="analisis-alertaLabel1-{{@index}}">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="analisis-alertaLabel1-{{@index}}">Remover Alerta
+                                        </h4>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/api-sat/early-alert/{{id_padre}}/related-alert/{{id_hijo}}/remove-related-alert"
+                                            method="POST">
+                                            <div class="form-group text-center">
+                                                <label for="message-text" class="control-label"><strong>¿Esta seguro de
+                                                        "Remover la Alerta #caso: "{{id_hijo}}"?</strong></label>
+                                                <textarea class="form-control" id="message-text1"
+                                                    disabled>Al confirmar la relación de está alerta, ya no estará vinculada a este caso.</textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="btn btn-danger">Remover</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- Fin --}}
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

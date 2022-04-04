@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Actualizar Tipo de Fuente</h4>
+                <form class="m-t-40" novalidate action="/api-sat/source-type/{{typeSource.id_tipo_fuente}}/edit" method="POST">
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5> T&iacute;tulo tipo fuente </h5>
+                                     <div class="controls">
+                                        <input type="text" name="nombre_tipo_fuente" class="form-control" value="{{typeSource.nombre_tipo_fuente}}">
+                                    </div>
+                                    {{!-- <div class="controls">
+                                        <input type="text" name="nombre_fuente" class="form-control" required
+                                            data-validation-required-message="This field is required">
+                                    </div> --}}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Estado</h5>
+                                    <div class="controls">
+                                        <select name="estado" id="select" required class="form-control">
+                                            {{!-- <option value="{{typeSource.estado}}">{{#stateDetails typeSource.estado}}{{/stateDetails}}</option> --}}
+                                            <option value="1">Activo</option>
+                                            <option value="0">Inactivo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="text-xs-right">
+                            <button type="submit" class="btn btn-info">Actualizar</button>
+                            <a href="/source-type-list" type="reset" class="btn btn-inverse">Cancelar</a>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

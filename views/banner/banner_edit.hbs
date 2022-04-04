@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="row page-titles">
+        <div class="col-md-12 align-self-center">
+            {{!-- <h3 class="text-themecolor">Agresiones</h3> --}}
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/api-sat/banner-list">Banner</a></li>
+                <li class="breadcrumb-item active">Lista Banner</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-subtitle">Formulario del Banner</h6>
+                    <form class="m-t-40" novalidate action="/api-sat/banner/{{banner.id_banner}}/update" method="POST">
+                        <div class="form-group">
+                            <h5>T&iacute;tulo<span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <input class="form-control" type="text" placeholder="T&iacute;tulo Banner.."
+                                    name="titulo_banner" value="{{banner.titulo_banner}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h5>Descripci&oacute;n<span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <textarea class="form-control" rows="5" maxlength="140"
+                                    name="descripcion">{{banner.descripcion}}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h5>Estado</h5>
+                            <div class="controls">
+                                <select name="estado" id="select" class="form-control">
+                                    <option value="1">Activo</option>
+                                    <option value="0">Inactivo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="text-xs-right">
+                            <button type="submit" class="btn btn-info">Actualizar</button>
+                            <a href="/api-sat/banner-list" type="reset" class="btn btn-inverse">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-subtitle">Actualizar Imagen </h6>
+                    <div class="form-group">
+                        <div class="m-t-20 row">
+                            <div class="col-md-12 col-xs-12 text-center">
+                                <div class="content-img mb-3">
+                                    <img src="{{banner.url}}" alt="user" class="radius" width="80" />
+                                </div>
+                                <div class="content-button">
+                                    <a href="#" class="btn btn-info" data-toggle="modal"
+                                        data-target="#BannerImage-1">Actualizar Imagen</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{!-- div image --}}
+    <div class="modal" id="BannerImage-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel1">Imagen</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/api-sat/banner/{{banner.id_banner}}/photo-update" method="POST" enctype="multipart/form-data">
+                        <div class="card">
+                            <div class="card-body">
+                                {{!-- <h4 class="card-title">File Upload2</h4> --}}
+                                <label for="input-file-now-custom-1">Actualizar Imagen</label>
+                                <input type="file" id="input-file-now-custom-1" name="file" class="dropify"
+                                    data-default-file="{{banner.url}}" value="{{banner.url}}"/>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-inverse" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

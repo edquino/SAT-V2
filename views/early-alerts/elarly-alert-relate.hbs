@@ -1,0 +1,114 @@
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        {{!-- <h3 class="text-themecolor">Alertas</h3> --}}
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/api-sat/early-alert/list">Alertas</a></li>
+            <li class="breadcrumb-item"><a href="/api-sat/early-alert/{{id_alerta_temprana}}/view-analize">Sección Análisis</a></li>
+            <li class="breadcrumb-item active">Relacionacionar Alerta</li>
+        </ol>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+{{!-- <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                This is some text within a card block.
+            </div>
+        </div>
+    </div>
+</div> --}}
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-12">
+        <!-- table responsive -->
+        <div class="card">
+            <div class="card-body">
+                {{!-- <h4 class="card-title">Alertas</h4> --}}
+                <h6 class="card-subtitle">Alertas No Relacionadas</h6>
+                <div class="table-responsive m-t-40">
+                    {{!-- Table administrator --}}
+                    <table id="config-table" class="table display table-bordered table-striped no-wrap">
+                        <thead>
+                            <tr>
+                                <th>#Caso {{alertaPrincipal.id_alerta_temprana}}</th>
+                                <th>Ver</th>
+                                <th>Relacionar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each alertListToRelate}}
+                            <tr>
+                                <td>{{id_alerta_temprana}}</td>
+                                <td>
+                                    <a href="/api-sat/early-alert/{{id_alerta_temprana}}/view-alert" class="btn btn-secondary"
+                                        aria-pressed="false">
+                                        <i class="ti-eye text" aria-hidden="true"></i>
+                                        <i class="ti-pencil-alt text-active" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <form action="/api-sat/early-alert/{{alerta_principal}}/relate-alert/{{id_alerta_temprana}}" method="POST">
+                                        <button type="submit"
+                                            class="btn btn-secondary" aria-pressed="false">
+                                            <i class="ti-loop text" aria-hidden="true"></i>
+                                            <i class="ti-loop-alt text-active" aria-hidden="true"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        
+                            {{!-- Modal Relacionar Alerta--}}
+                            {{!-- <div class="modal" id="relacionar-alerta-{{@index}}" tabindex="-1" role="dialog" aria-labelledby="analisis-alertaLabel1-{{@index}}">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="analisis-alertaLabel1-{{@index}}">Relacionar Alerta</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                    aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/api-sat/early-alert/{{alerta_principal}}/relate-alert" method="POST">
+                                                <div class="form-group text-center">
+                                                    <input type="hidden" name="id_alerta_relacionada" value="{{id_alerta_temprana}}">
+                                                </div>
+                                                <div class="form-group text-center">
+                                                    <label for="message-text" class="control-label"><strong>¿Esta seguro de "Relacionar la Alerta #caso: {{id_alerta_temprana}}"
+                                                            con la Alerta #caso: {{alerta_principal}}?</strong></label>
+                                                    <textarea class="form-control" id="message-text1"
+                                                        disabled>Al confirmar la relación de está alerta, estará vinculada a este caso.</textarea>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" class="btn btn-primary">Relacionar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
+                            {{!-- Fin --}}
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->

@@ -1,0 +1,77 @@
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        {{!-- <h3 class="text-themecolor">Escenario</h3> --}}
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Tipo de Entrada</a></li>
+            <li class="breadcrumb-item active">Lista Tipos de Entrada</li>
+        </ol>
+    </div>
+    <div class="col-md-7 align-self-center text-right d-none d-md-block" style="color: white;">
+        <a href="/api-sat/entry-type/view-create" type="button" class="btn btn-info"><i class="fa fa-plus-circle"></i>
+            Nuevo</a>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+{{!-- <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                This is some text within a card block.
+            </div>
+        </div>
+    </div>
+</div> --}}
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-12">
+        <!-- table responsive -->
+        <div class="card">
+            <div class="card-body">
+                {{!-- <h4 class="card-title">Escenario</h4> --}}
+                <h6 class="card-subtitle">Cat&aacute;logo - Tipo de Entrada</h6>
+                <div class="table-responsive m-t-40">
+                    <table id="config-table" class="table display table-bordered table-striped no-wrap">
+                        <thead>
+                            <tr>
+                                <th>T&iacute;tulo</th>
+                                <th>Estado</th>
+                                <th>Modificar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each entryTypeList}}
+                            <tr>
+                                <td>{{nombre_entrada}}</td>
+                                <td>{{#stateDetails estado}}{{/stateDetails}}</td>
+                                <td>
+                                    <a href="/api-sat/entry-type/{{id_entrada}}/edit-view" class="btn btn-secondary"
+                                        aria-pressed="false">
+                                        <i class="ti-pencil text" aria-hidden="true"></i>
+                                        <i class="ti-pencil-alt text-active" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->

@@ -1,0 +1,84 @@
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        {{!-- <h3 class="text-themecolor">Agresiones</h3> --}}
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Banner</a></li>
+            <li class="breadcrumb-item active">Detalle del Banner</li>
+        </ol>
+    </div>
+    {{#ShowButtonCreateBanner bannerExist}}
+    <div class="col-md-7 align-self-center text-right d-none d-md-block" style="color: white;">
+    </div>
+    {{else}}
+    <div class="col-md-7 align-self-center text-right d-none d-md-block" style="color: white;">
+        <a href="/api-sat/banner/create-view" type="button" class="btn btn-info"><i class="fa fa-plus-circle"></i>
+            Nuevo</a>
+    </div>
+    {{/ShowButtonCreateBanner}}
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+{{!-- <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                This is some text within a card block.
+            </div>
+        </div>
+    </div>
+</div> --}}
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-12">
+        <!-- table responsive -->
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Banner</h4>
+                <h6 class="card-subtitle">Cat&aacute;logo-Banner</h6>
+                <div class="table-responsive m-t-40">
+                    <table id="config-table" class="table display table-bordered table-striped no-wrap">
+                        <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>T&iacute;tulo del Banner</th>
+                                <th>Descripci&oacute;n</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="{{banner.url}}" alt="" width="40" class="img-circle"></td>
+                                <td>{{banner.titulo_banner}}</td>
+                                <td>{{banner.descripcion}}</td>
+                                <td>{{#stateDetails banner.estado}}{{/stateDetails}}</td>
+                                <td>
+                                    <a href="/api-sat/banner/{{banner.id_banner}}/view-update"
+                                        class="btn btn-secondary" aria-pressed="false">
+                                        <i class="ti-pencil text" aria-hidden="true"></i>
+                                        <i class="ti-pencil-alt text-active" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->

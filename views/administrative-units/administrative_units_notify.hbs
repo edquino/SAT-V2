@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row page-titles">
+        <div class="col-md-12 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/api-sat/administrative-units-list">Administraci&oacute;n</a></li>
+                <li class="breadcrumb-item active">Envio de Notificaciones</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Enviar Notificaci&oacute;n a Personas Usuarias</h4>
+                    <h6 class="card-subtitle">Notificaci&oacute;n</h6>
+                    <form class="m-t-40" novalidate action="/api-sat/administrative-units/notify" method="POST">
+                        <section>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <label>Mensaje<span class="text-danger">*</span></label>
+                                            <textarea name="mensaje" class="form-control" rows="5" maxlength="140" required data-validation-required-message="Este campo es obligatorio"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-xs-right">
+                                <button type="submit" class="btn btn-info">Enviar</button>
+                                <a href="/api-sat/administrative-units-list" type="reset" class="btn btn-inverse">Cancelar</a>
+                            </div>
+                        </section>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

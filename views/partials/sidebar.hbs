@@ -1,0 +1,133 @@
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li class="nav-devider"></li>
+                <li class="nav-small-cap">PERSONAL</li>
+                {{#isAdmin user.id_perfil}}
+                <li class="three-column"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                            class="icon-On-Off-3"></i><span class="hide-menu">Administración</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="/api-sat/users-list">Usuarios</a></li>
+                        <li><a href="/api-sat/role-list">Roles</a></li>
+                        <li><a href="/api-sat/modules-list">M&oacute;dulos</a></li>
+                        <li><a href="/api-sat/administrative-units-list">Notificaciones</a></li>
+                    </ul>
+                </li>
+                <li class="three-column"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                            class="icon-On-Off-3"></i><span class="hide-menu">Catálogos </span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="/api-sat/actions-pddh-list">Acci&oacute;n PDDH</a></li>
+                        <li><a href="/api-sat/Banner-list">Banner</a></li>
+                        <li><a href="/api-sat/crisis-classification-quality-list">Clasificaci&oacute;n de Crisis</a></li>
+                        <li><a href="/api-sat/participant-quality-list">Clasificaci&oacute;n Participa</a></li>
+                        <li><a href="/api-sat/scenario-list">Escenario</a></li>
+                        <li><a href="/api-sat/scenarios-list">Escenarios</a></li>
+                        <li><a href="/api-sat/source-list">Fuentes</a></li>
+                        <li><a href="/api-sat/conflict-phases-list">Fases del Conflicto</a></li>
+                        <li><a href="/api-sat/issuance-reference-list">Referencia de Emisi&oacute;n</a></li>
+                        <li><a href="/api-sat/temporality-list">Temporalidad</a></li>
+                        <li><a href="/api-sat/aggression-list">Tipo de Agresi&oacute;n</a></li>
+                        <li><a href="/api-sat/alert-type-list">Tipos de Alertas</a></li>
+                        <li><a href="/api-sat/entry-type-list">Tipo de Entrada</a></li>
+                        <li><a href="/api-sat/source-type-list">Tipo de Fuente</a></li>
+                        <li><a href="/api-sat/population-type-list">Tipo de Poblaci&oacute;n</a></li>
+                        <li><a href="/api-sat/conflict-situation-list">Situaci&oacute;n Actual del Conflicto</a></li>
+                        <li><a href="/api-sat/sex-list">Sexo</a></li>
+                        <li><a href="/api-sat/topic-list">Temas</a></li>
+                        <li><a href="/api-sat/subtopic-list">Subtemas</a></li>
+                        <li><a href="/api-sat/situation-list">Situaci&oacute;n Conflictiva</a></li>
+                        <li><a href="/api-sat/criterion-list">Criterio</a></li>
+                        <li><a href="/api-sat/gender-list">Genero</a></li>
+                        <li><a href="/api-sat/zone-list">Zonas </a></li>
+                    </ul>
+                </li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                            class="icon-Car-Wheel"></i><span class="hide-menu">Dashboard</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="/api-sat/report/indicators">Indicadores </a></li>
+                        <li><a href="/api-sat/report/type-alert">Reporte Tipo de Alerta</a></li>
+                        <li><a href="/api-sat/report/phases-conflict">Reporte por Fases de Conflicto</a></li>
+                        <li><a href="/api-sat/report/conflict-situation">Reporte por Situación Conflictiva</a></li>
+                        <li><a href="/api-sat/report/heat-map">Mapa de Calor</a></li>
+                         <li><a href="/api-sat/report/context-indicators">Indicadores de Contexto</a></li>
+                    </ul>
+                </li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-Bell"></i><span
+                            class="hide-menu">Alertas</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="/api-sat/early-alert/list">Alertas Registradas</a></li>
+                    </ul>
+                </li>
+                <li></li>
+                {{else}}
+                {{#siderbardOptionsAdministracion user.administracion}}
+                <li class="two-column"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                            class="icon-On-Off-2"></i><span class="hide-menu">Administraci&oacute;n</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="/api-sat/role-list">Roles</a></li>
+                        <li><a href="/api-sat/modules-list">M&oacute;dulos</a></li>
+                    </ul>
+                </li>
+                {{/siderbardOptionsAdministracion}}
+                {{#siderbardOptionsCatalogos user.cat}}
+                <li class="three-column"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                            class="icon-On-Off-3"></i><span class="hide-menu">Catálogos </span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="/api-sat/actions-pddh-list">Acci&oacute;n PDDH</a></li>
+                        <li><a href="/api-sat/Banner-list">Banner</a></li>
+                        <li><a href="/api-sat/crisis-classification-quality-list">Clasificaci&oacute;n de Crisis</a></li>
+                        <li><a href="/api-sat/participant-quality-list">Clasificaci&oacute;n Participa</a></li>
+                        <li><a href="/api-sat/scenario-list">Escenario</a></li>
+                        <li><a href="/api-sat/scenarios-list">Escenarios</a></li>
+                        <li><a href="/api-sat/source-list">Fuentes</a></li>
+                        <li><a href="/api-sat/conflict-phases-list">Fases del Conflicto</a></li>
+                        <li><a href="/api-sat/issuance-reference-list">Referencia de Emisi&oacute;n</a></li>
+                        <li><a href="/api-sat/temporality-list">Temporalidad</a></li>
+                        <li><a href="/api-sat/aggression-list">Tipo de Agresi&oacute;n</a></li>
+                        <li><a href="/api-sat/alert-type-list">Tipos de Alertas</a></li>
+                        <li><a href="/api-sat/entry-type-list">Tipo de Entrada</a></li>
+                        <li><a href="/api-sat/source-type-list">Tipo de Fuente</a></li>
+                        <li><a href="/api-sat/population-type-list">Tipo de Poblaci&oacute;n</a></li>
+                        <li><a href="/api-sat/conflict-situation-list">Situaci&oacute;n Actual del Conflicto</a></li>
+                        <li><a href="/api-sat/sex-list">Sexo</a></li>
+                        <li><a href="/api-sat/topic-list">Temas</a></li>
+                        <li><a href="/api-sat/subtopic-list">Subtemas</a></li>
+                        <li><a href="/api-sat/situation-list">Situaci&oacute;n Conflictiva</a></li>
+                        <li><a href="/api-sat/criterion-list">Criterio</a></li>
+                        <li><a href="/api-sat/gender-list">Genero</a></li>
+                        <li><a href="/api-sat/zone-list">Zonas </a></li>
+                    </ul>
+                </li>
+                {{/siderbardOptionsCatalogos}}
+                {{#siderbardOptionsDashboard user.dashboard}}
+                <li> <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i
+                            class="icon-Car-Wheel"></i><span class="hide-menu">Dashboard</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="/api-sat/report/indicators">Indicadores </a></li>
+                        <li><a href="/api-sat/report/type-alert">Reporte Tipo de Alerta</a></li>
+                        <li><a href="/api-sat/report/phases-conflict">Reporte por Fases de Conflicto</a></li>
+                        <li><a href="/api-sat/report/conflict-situation">Reporte por Situación Conflictiva</a></li>
+                        <li><a href="/api-sat/report/heat-map">Mapa de Calor</a></li>
+                        <li><a href="/api-sat/report/context-indicators">Indicadores de Contexto</a></li>
+                    </ul>
+                </li>
+                {{/siderbardOptionsDashboard}}
+                {{#siderbardOptionsAlert user.alert}}
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-Bell"></i><span
+                            class="hide-menu">Alertas</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="/api-sat/early-alert/list">Alertas Registradas</a></li>
+                    </ul>
+                </li>
+                <li></li>
+                {{/siderbardOptionsAlert}}
+                {{/isAdmin}}
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>

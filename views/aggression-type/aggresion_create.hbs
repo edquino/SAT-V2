@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Crear Tipo de Agresi&oacute;n</h4>
+                {{!-- <h6 class="card-subtitle">Bootstrap Form Validation check the --}}
+                    {{!-- <a href="http://reactiveraven.github.io/jqBootstrapValidation/">official website </a></h6>
+                --}}
+                <form class="m-t-40" novalidate action="/api-sat/aggression/create" method="POST">
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>T&iacute;tulo de Agresi&oacute;n<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" placeholder="tipo de agresi&oacute;n" name="nombre_agresion" class="form-control" required
+                                            data-validation-required-message="Este campo es obligatorio">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Ponderaci&oacute;n %</h5>
+                                    <div class="controls">
+                                        <input type="text" maxlength="3" class="form-control"
+                                        name="ponderacion" required data-validation-required-message="Este campo es obligatorio">
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Estado</h5>
+                                    <div class="controls">
+                                        <select name="estado" id="estado_agr" class="select2 form-control" required
+                                            data-validation-required-message="Este campo es obligatorio">
+                                            <option value="1">Activo</option>
+                                            <option value="0">Inactivo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-xs-right">
+                            <button type="submit" class="btn btn-info">Guardar</button>
+                            <a href="/api-sat/aggression-list" type="reset" class="btn btn-inverse">Cancelar</a>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

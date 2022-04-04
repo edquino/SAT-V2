@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Crear Criterio</h4>
+                {{!-- <h6 class="card-subtitle">Bootstrap Form Validation check the --}}
+                    {{!-- <a href="http://reactiveraven.github.io/jqBootstrapValidation/">official website </a></h6>
+                --}}
+                <form class="m-t-40" novalidate action="/api-sat/criterion/create" method="POST">
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>T&iacute;tulo Criterio<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" name="nombre_criterio" class="form-control" required
+                                            data-validation-required-message="Este campo es obligatorio">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Temas</h5>
+                                    <div class="controls">
+                                        <select id="id_tema" name="id_tema" class="select2 form-control" required
+                                            data-validation-required-message="Este campo es obligatorio">
+                                            <option value="">No seleccionado</option>
+                                            {{#each topic}}
+                                            <option value="{{id_tema}}">{{nombre_tema}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>SubTemas</h5>
+                                    <div class="controls">
+                                        <select name="id_subtema" id="id_subtema" class="select2 form-control" required
+                                            data-validation-required-message="Este campo es obligatorio">
+                                            <option value="">Seleccionar un tema</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Situaci&oacute;n Conflictiva</h5>
+                                    <div class="controls">
+                                        <select id="id_situacion_conflictiva" name="id_situacion_conflictiva" class="select2 form-control" required
+                                            data-validation-required-message="Este campo es obligatorio">
+                                            <option value="">Seleccionar un sub-tema</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Estado</h5>
+                                    <div class="controls">
+                                        <select name="estado" id="estado_cr" class="select2 form-control" required
+                                            data-validation-required-message="Este campo es obligatorio">
+                                            <option value="1">Activo</option>
+                                            <option value="0">Inactivo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-xs-right">
+                            <button type="submit" class="btn btn-info">Guardar</button>
+                            <a href="/api-sat/criterion-list" type="reset" class="btn btn-inverse">Cancelar</a>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

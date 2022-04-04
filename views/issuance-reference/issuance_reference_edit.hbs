@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Actualizar Referencia</h4>
+                <form class="m-t-40" novalidate action="/api-sat/issuance-reference/{{IssuanceReference.id_referencia_emision}}/update"
+                    method="POST">
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5> T&iacute;tulo Tipo de Entrada</h5>
+                                    <div class="controls">
+                                        <input type="text" name="nombre_referencia" class="form-control"
+                                            value="{{IssuanceReference.nombre_referencia}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Estado</h5>
+                                    <div class="controls">
+                                        <select name="estado" id="estado_st" required class="select2 form-control">
+                                            <option value="1">Activo</option>
+                                            <option value="0">Inactivo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-xs-right">
+                            <button type="submit" class="btn btn-info">Actualizar</button>
+                            <a href="/api-sat/issuance-reference-list" type="reset" class="btn btn-inverse">Cancelar</a>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

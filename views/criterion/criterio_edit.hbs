@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Actualizar Criterio</h4>
+                {{!-- <h6 class="card-subtitle">Bootstrap Form Validation check the --}}
+                    {{!-- <a href="http://reactiveraven.github.io/jqBootstrapValidation/">official website </a></h6>
+                --}}
+                <form class="m-t-40" novalidate action="/api-sat/criterion/{{criterion.id_criterio}}/update" method="POST">
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>T&iacute;tulo Criterio<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" name="nombre_criterio" class="form-control" value="{{criterion.nombre_criterio}}"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Temas</h5>
+                                    <div class="controls">
+                                        <select id="id_tema" name="id_tema" class="select2 form-control">
+                                            <option value="{{criterion.id_tema}}">{{criterion.nombre_tema}}</option>
+                                            {{#each topic}}
+                                            <option value="{{id_tema}}">{{nombre_tema}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>SubTemas</h5>
+                                    <div class="controls">
+                                        <select id="id_subtema" name="id_subtema" class="select2 form-control">
+                                            <option value="{{criterion.id_subtema}}">{{criterion.nombre_subtema}}</option>
+                                            {{#each subtopic}}
+                                            <option value="{{id_subtema}}">{{nombre_subtema}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Situaci&oacute;n Conflictiva</h5>
+                                    <div class="controls">
+                                        <select id="id_situacion_conflictiva"  name="id_situacion_conflictiva" class="select2 form-control">
+                                            <option value="{{criterion.id_sit_conflictiva}}">{{criterion.nombre_sit_conflictiva}}</option>
+                                            {{#each conflictSituation}}
+                                            <option value="{{id_situacion_conflictiva}}">{{nombre_sit_conflictiva}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Estado</h5>
+                                    <div class="controls">
+                                        <select name="estado" id="estado_cri" class="select2 form-control">
+                                            <option value="1">Activo</option>
+                                            <option value="0">Inactivo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-xs-right">
+                            <button type="submit" class="btn btn-info">Actualizar</button>
+                            <a href="/api-sat/criterion-list" type="reset" class="btn btn-inverse">Cancelar</a>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

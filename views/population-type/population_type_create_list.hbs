@@ -1,0 +1,87 @@
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        {{!-- <h3 class="text-themecolor">Fases del conflicto</h3> --}}
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Tipo de Poblaci&oacute;n</a></li>
+            <li class="breadcrumb-item active">Lista de Tipos</li>
+        </ol>
+    </div>
+    <div class="col-md-7 align-self-center text-right d-none d-md-block" style="color: white;">
+        <a href="/api-sat/population-type/create-view" type="button" class="btn btn-info"><i
+                class="fa fa-plus-circle"></i>
+            Nuevo</a>
+    </div>
+    <div class="">
+        <button
+            class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i
+                class="ti-settings text-white"></i></button>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+{{!-- <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                This is some text within a card block.
+            </div>
+        </div>
+    </div>
+</div> --}}
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->
+
+
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-12">
+        <!-- table responsive -->
+        <div class="card">
+            <div class="card-body">
+                {{!-- <h4 class="card-title">Fases</h4> --}}
+                <h6 class="card-subtitle">Cat&aacute;logo Tipo de Poblaci&oacute;n</h6>
+                <div class="table-responsive m-t-40">
+                    <table id="config-table" class="table display table-bordered table-striped no-wrap">
+                        <thead>
+                            <tr>
+                                <th>T&iacute;tulo</th>
+                                <th>Estado</th>
+                                <th>Modificar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each populationTypeList}}
+                            <tr>
+                                <td>{{nombre_poblacion}}</td>
+                                <td>{{#stateDetails estado}}{{/stateDetails}}</td>
+                                <td>
+                                    <a href="/api-sat/population-type/{{id_poblacion}}/update-view"
+                                        class="btn btn-secondary" aria-pressed="false">
+                                        <i class="ti-pencil text" aria-hidden="true"></i>
+                                        <i class="ti-pencil-alt text-active" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->
